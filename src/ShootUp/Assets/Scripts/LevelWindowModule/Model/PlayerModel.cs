@@ -9,13 +9,15 @@ namespace LevelWindowModule
         private readonly GameSettings _gameSettings;
         private float _invulnerableTimer;
         private float _blinkTimer;
+        private float _shootCooldown;
 
         public float PositionX { get; private set; }
-        public bool IsSeeRight { get; private set; }
         public float GetWidth => _playerHierarchy.SpriteRenderer.bounds.size.x;
         public float GetHeight => _playerHierarchy.SpriteRenderer.bounds.size.y;
         public bool IsInvulnerable => _invulnerableTimer > 0;
         public Collider2D Collider => _playerHierarchy.Collider;
+        public Vector3 BulletStartPosition => _playerHierarchy.BulletStartPosition.position;
+        public bool CanShoot => _shootCooldown <= 0;
 
         public PlayerModel(PlayerHierarchy playerHierarchy, GameSettings gameSettings)
         {
@@ -30,11 +32,6 @@ namespace LevelWindowModule
             Vector3 position = _playerHierarchy.transform.position;
             position.x = x;
             _playerHierarchy.transform.position = position;
-        }
-
-        public void SerIsSeeRight(bool isSeeRight)
-        {
-            IsSeeRight = isSeeRight;
         }
 
         public void SetPositionY(float y)
@@ -55,9 +52,16 @@ namespace LevelWindowModule
             if (_invulnerableTimer > 0)
             {
                 _invulnerableTimer -= deltaTime;
-
                 UpdateBlink(deltaTime);
             }
+
+            if (_shootCooldown > 0)
+                _shootCooldown -= deltaTime;
+        }
+
+        public void SetShootCooldown(float playerShootCooldown)
+        {
+            _shootCooldown = playerShootCooldown;
         }
 
         private void UpdateBlink(float deltaTime)

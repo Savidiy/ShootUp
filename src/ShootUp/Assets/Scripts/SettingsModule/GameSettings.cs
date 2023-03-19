@@ -18,10 +18,14 @@ namespace SettingsModule
         public float SpeedY = 20f;
         public KeyCode[] RightKeys;
         public KeyCode[] LeftKeys;
+        public KeyCode[] ShootKeys;
         public float PlayerSpeed = 4;
         public float StartInvulDuration = 2;
         public float HitInvulDuration = 2;
         public float BlinkPeriod = 0.1f;
+        public float PlayerShootCooldown = 0.2f;
+        public BulletHierarchy BulletPrefab;
+        public float BulletSpeed = 7f;
     }
 
     [Serializable]
