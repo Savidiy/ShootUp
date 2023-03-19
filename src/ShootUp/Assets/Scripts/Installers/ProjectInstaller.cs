@@ -39,6 +39,8 @@ namespace Installers
             Container.Bind<ProgressSaver>().AsSingle();
             Container.Bind<LevelModelFactory>().AsSingle();
 
+            Container.Bind<PlayerHolder>().AsSingle();
+            Container.Bind<PlayerMover>().AsSingle();
             Container.Bind<EnemyMover>().AsSingle();
             Container.Bind<BorderController>().AsSingle();
             Container.Bind<CameraProvider>().AsSingle();

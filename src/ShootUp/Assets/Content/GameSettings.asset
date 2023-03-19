@@ -21,3 +21,6 @@ MonoBehaviour:
   UpLimitPixelShift: 50
   SpeedX: 1
   SpeedY: 1
+  RightKeys: 6400000013010000
+  LeftKeys: 6100000014010000
+  PlayerSpeed: 4

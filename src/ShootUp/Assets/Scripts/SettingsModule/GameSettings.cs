@@ -16,6 +16,9 @@ namespace SettingsModule
         public float UpLimitPixelShift = 50;
         public float SpeedX = 20f;
         public float SpeedY = 20f;
+        public KeyCode[] RightKeys;
+        public KeyCode[] LeftKeys;
+        public float PlayerSpeed = 4;
     }
 
     [Serializable]
