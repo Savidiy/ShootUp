@@ -1,29 +1,26 @@
 using System;
 using System.Collections.Generic;
-using LevelWindowModule.Contracts;
-using Sirenix.OdinInspector;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+using Savidiy.Utils;
 using UnityEngine;
 
 namespace SettingsModule
 {
     [CreateAssetMenu(fileName = "GameSettings", menuName = "GameSettings", order = 0)]
-    public class GameSettings : SerializedScriptableObject
+    public class GameSettings : AutoSaveScriptableObject
     {
         public List<LevelData> Levels;
-
-        private void OnValidate()
-        {
-#if UNITY_EDITOR
-            AssetDatabase.SaveAssetIfDirty(this);
-#endif
-        }
+        public float LeftBorderShift;
+        public float BottomBorderShift;
+        public float RightBorderShift;
+        public float BorderScaleFactor = 5;
+        public float UpLimitPixelShift = 50;
+        public float SpeedX = 20f;
+        public float SpeedY = 20f;
     }
 
     [Serializable]
     public class LevelData
     {
+        public int Value = 1;
     }
 }

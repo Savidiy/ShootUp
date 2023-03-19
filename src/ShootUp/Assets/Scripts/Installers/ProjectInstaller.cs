@@ -15,7 +15,7 @@ namespace Installers
     public class ProjectInstaller : MonoInstaller
     {
         public GameSettings GameSettings;
-        
+
         public override void InstallBindings()
         {
             Container.BindInterfacesTo<Bootstrapper>().AsSingle();
@@ -29,16 +29,20 @@ namespace Installers
             Container.BindInterfacesTo<StartWindowPresenter>().AsSingle();
             Container.BindInterfacesTo<SettingsWindowPresenter>().AsSingle();
             Container.BindInterfacesTo<LevelWindowPresenter>().AsSingle();
-        
+
             Container.Bind<MainStateMachine>().AsSingle();
             Container.Bind<StartMainState>().AsSingle();
             Container.Bind<LevelPlayMainState>().AsSingle();
-            
+
             Container.Bind<LevelHolder>().AsSingle();
             Container.Bind<ProgressProvider>().AsSingle();
             Container.Bind<ProgressSaver>().AsSingle();
             Container.Bind<LevelModelFactory>().AsSingle();
-            
+
+            Container.Bind<EnemyMover>().AsSingle();
+            Container.Bind<BorderController>().AsSingle();
+            Container.Bind<CameraProvider>().AsSingle();
+
             Container.Bind<GameSettings>().FromInstance(GameSettings);
         }
     }
