@@ -36,8 +36,9 @@ namespace MainModule
 
         public void Enter()
         {
-            _levelHolder.LoadCurrentLevel();
             _borderController.UpdateBorders();
+
+            _levelHolder.LoadCurrentLevel();
             _playerHolder.ResetPlayer();
             _enemyAttackExecutor.Activate();
             _playerMover.Activate();

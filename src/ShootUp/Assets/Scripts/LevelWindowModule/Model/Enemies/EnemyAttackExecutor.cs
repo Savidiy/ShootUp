@@ -34,7 +34,7 @@ namespace LevelWindowModule
                 return;
 
             Collider2D playerCollider = playerModel.Collider;
-            foreach (IEnemy enemy in _enemiesHolder.Enemies)
+            foreach (Enemy enemy in _enemiesHolder.Enemies)
             {
                 if (playerModel.IsInvulnerable)
                     return;

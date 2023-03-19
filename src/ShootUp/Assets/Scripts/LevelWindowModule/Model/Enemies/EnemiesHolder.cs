@@ -6,7 +6,7 @@ namespace LevelWindowModule
     {
         private readonly List<Enemy> _enemies = new List<Enemy>();
 
-        public IReadOnlyList<IEnemy> Enemies => _enemies;
+        public IReadOnlyList<Enemy> Enemies => _enemies;
 
         public void Add(Enemy enemy)
         {

@@ -15,6 +15,7 @@ namespace Installers
     public class ProjectInstaller : MonoInstaller
     {
         public GameSettings GameSettings;
+        public EnemyPrefabProvider EnemyPrefabProvider;
 
         public override void InstallBindings()
         {
@@ -49,11 +50,14 @@ namespace Installers
             Container.Bind<EnemyAttackExecutor>().AsSingle();
             Container.Bind<EnemiesHolder>().AsSingle();
             Container.Bind<EnemyMover>().AsSingle();
+            Container.Bind<EnemyFactory>().AsSingle();
+            Container.BindInterfacesTo<EnemyRombMover>().AsSingle();
             
             Container.Bind<BorderController>().AsSingle();
             Container.Bind<CameraProvider>().AsSingle();
 
             Container.Bind<GameSettings>().FromInstance(GameSettings);
+            Container.Bind<EnemyPrefabProvider>().FromInstance(EnemyPrefabProvider);
         }
     }
 }

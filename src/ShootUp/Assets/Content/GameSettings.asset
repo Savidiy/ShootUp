@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   Levels:
-  - Value: 1
+  - Enemies:
+    - EnemyType: 0
+      PositionPercentX: 0.743
+      PositionPercentY: 0.9
+    - EnemyType: 0
+      PositionPercentX: 0.183
+      PositionPercentY: 0.783
   LeftBorderShift: 0
   BottomBorderShift: 10
   RightBorderShift: 0

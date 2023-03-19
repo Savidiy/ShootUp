@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LevelWindowModule;
 using Savidiy.Utils;
 using UnityEngine;
 
@@ -32,6 +33,16 @@ namespace SettingsModule
     [Serializable]
     public class LevelData
     {
-        public int Value = 1;
+        public List<EnemySpawnData> Enemies;
+    }
+
+    [Serializable]
+    public class EnemySpawnData
+    {
+        public EEnemyType EnemyType;
+        [Range(0, 1)]
+        public float PositionPercentX;
+        [Range(0, 1)]
+        public float PositionPercentY = 0.9f;
     }
 }
