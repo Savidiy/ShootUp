@@ -5,7 +5,8 @@ namespace LevelWindowModule.View
 {
     public interface ILevelWindowViewModel : IViewModel
     {
-        void SettingsClickFromView();
         IReadOnlyReactiveProperty<int> HeartCount { get; }
+        void SettingsClickFromView();
+        void ClickRestartFromView();
     }
 }

@@ -29,17 +29,21 @@ namespace LevelWindowModule
 
         private void OnUpdated()
         {
-            Collider2D playerCollider = _playerHolder.PlayerModel.Collider;
+            PlayerModel playerModel = _playerHolder.PlayerModel;
+            if (!playerModel.IsAlive)
+                return;
+
+            Collider2D playerCollider = playerModel.Collider;
             foreach (IEnemy enemy in _enemiesHolder.Enemies)
             {
-                if (_playerHolder.PlayerModel.IsInvulnerable)
+                if (playerModel.IsInvulnerable)
                     return;
 
                 Collider2D enemyCollider = enemy.Collider;
                 ColliderDistance2D colliderDistance2D = Physics2D.Distance(playerCollider, enemyCollider);
                 if (colliderDistance2D.isOverlapped)
                 {
-                    _playerHolder.PlayerModel.GetHit();
+                    playerModel.GetHit();
                 }
             }
         }

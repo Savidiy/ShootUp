@@ -33,6 +33,9 @@ namespace LevelWindowModule
         private void OnUpdated()
         {
             PlayerModel playerModel = _playerHolder.PlayerModel;
+            if (!playerModel.IsAlive)
+                return;
+            
             float halfPlayerWidth = playerModel.GetWidth / 2;
             float positionX = playerModel.PositionX;
 

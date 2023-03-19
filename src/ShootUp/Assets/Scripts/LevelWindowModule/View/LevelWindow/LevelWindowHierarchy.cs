@@ -8,5 +8,7 @@ namespace LevelWindowModule.View
         public Button SettingsButton;
         public HeartHierarchy HeartPrefab;
         public Transform HeartRoot;
+        public GameObject RestartContainer;
+        public Button RestartButton;
     }
 }

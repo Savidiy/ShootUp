@@ -19,8 +19,8 @@ MonoBehaviour:
   RightBorderShift: 0
   BorderScaleFactor: 5
   UpLimitPixelShift: 50
-  SpeedX: 1
-  SpeedY: 1
+  SpeedX: 2
+  SpeedY: 2
   RightKeys: 6400000013010000
   LeftKeys: 6100000014010000
   ShootKeys: 11010000120100007700000073000000320100003101000020000000
@@ -31,3 +31,4 @@ MonoBehaviour:
   PlayerShootCooldown: 0.2
   BulletPrefab: {fileID: 4649614719101894754, guid: 202f44a6e288fc246899be88099737a6, type: 3}
   BulletSpeed: 7
+  StartHeartCount: 2

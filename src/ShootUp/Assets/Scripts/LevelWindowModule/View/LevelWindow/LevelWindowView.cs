@@ -15,11 +15,19 @@ namespace LevelWindowModule.View
         protected override void UpdateViewModel(ILevelWindowViewModel viewModel)
         {
             BindClick(Hierarchy.SettingsButton, OnSettingsClick);
+            BindClick(Hierarchy.RestartButton, OnRestartClick);
             Bind(viewModel.HeartCount, OnHeartCountChange);
+        }
+
+        private void OnRestartClick()
+        {
+            ViewModel.ClickRestartFromView();
         }
 
         private void OnHeartCountChange(int heartCount)
         {
+            Hierarchy.RestartContainer.SetActive(heartCount == 0);
+            
             for (int i = _hearts.Count - 1; i >= heartCount; i--)
             {
                 HeartHierarchy heartHierarchy = _hearts[i];

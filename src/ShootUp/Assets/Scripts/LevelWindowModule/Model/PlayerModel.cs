@@ -19,9 +19,10 @@ namespace LevelWindowModule
         public bool IsInvulnerable => _invulnerableTimer > 0;
         public Collider2D Collider => _playerHierarchy.Collider;
         public Vector3 BulletStartPosition => _playerHierarchy.BulletStartPosition.position;
-        public bool CanShoot => _shootCooldown <= 0;
+        public bool CanShoot => IsAlive && _shootCooldown <= 0;
 
         public IReadOnlyReactiveProperty<int> HeartCount => _heartCount;
+        public bool IsAlive => _heartCount.Value > 0;
 
         public PlayerModel(PlayerHierarchy playerHierarchy, GameSettings gameSettings)
         {

@@ -1,5 +1,6 @@
 using System;
 using MvvmModule;
+using Savidiy.Utils;
 using SettingsWindowModule.Contracts;
 using SettingsWindowModule.View;
 using UiModule;
@@ -13,14 +14,16 @@ namespace SettingsWindowModule
         private readonly WindowsRootProvider _windowsRootProvider;
         private readonly IViewFactory _viewFactory;
         private readonly IViewModelFactory _viewModelFactory;
+        private readonly TickInvoker _tickInvoker;
         private readonly SettingsWindowView _view;
         private SettingsWindowViewModel _viewModel;
 
         public SettingsWindowPresenter(WindowsRootProvider windowsRootProvider, IViewFactory viewFactory,
-            IViewModelFactory viewModelFactory)
+            IViewModelFactory viewModelFactory, TickInvoker tickInvoker)
         {
             _viewFactory = viewFactory;
             _viewModelFactory = viewModelFactory;
+            _tickInvoker = tickInvoker;
             _windowsRootProvider = windowsRootProvider;
             _view = CreateView();
             _view.SetActive(false);
@@ -36,6 +39,8 @@ namespace SettingsWindowModule
             _view.Initialize(_viewModel);
             _view.Hierarchy.transform.SetAsLastSibling();
             _view.SetActive(true);
+
+            _tickInvoker.SetPause(true);
         }
 
         public void HideWindow()
@@ -43,6 +48,7 @@ namespace SettingsWindowModule
             _viewModel.NeedClose -= HideWindow;
             _view.ClearViewModel();
             _view.SetActive(false);
+            _tickInvoker.SetPause(false);
         }
 
         public void Dispose()
