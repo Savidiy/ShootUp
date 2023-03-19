@@ -17,17 +17,17 @@ MonoBehaviour:
     - EnemyType: 0
       PositionPercentX: 0.743
       PositionPercentY: 0.9
-    - EnemyType: 0
+    - EnemyType: 1
       PositionPercentX: 0.183
       PositionPercentY: 1
   - Enemies:
-    - EnemyType: 0
+    - EnemyType: 2
       PositionPercentX: 0.084
       PositionPercentY: 0.9
     - EnemyType: 0
       PositionPercentX: 0.299
       PositionPercentY: 0.9
-    - EnemyType: 0
+    - EnemyType: 3
       PositionPercentX: 0.745
       PositionPercentY: 0.9
   LeftBorderShift: 0
