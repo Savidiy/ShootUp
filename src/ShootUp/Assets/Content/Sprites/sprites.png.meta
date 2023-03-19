@@ -598,7 +598,7 @@ TextureImporter:
         width: 23
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -606,6 +606,69 @@ TextureImporter:
       bones: []
       spriteID: 82bbf23f02d24a343bddc98146b7bb85
       internalID: -1553914981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites_20
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 197
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2279cf2808ab1124294ccb8834ae0b74
+      internalID: 1091686563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites_21
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 197
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa21e03e6e708cd4bb2ab766c3fbdf04
+      internalID: 1675828878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprites_22
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 197
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51455b419362d1647bef567b7650091f
+      internalID: -1654618924
       vertices: []
       indices: 
       edges: []
@@ -644,6 +707,9 @@ TextureImporter:
       empty: 1763236762
       sprites_14: -2080158628
       sprites_4: -454041634
+      sprites_20: 1091686563
+      sprites_21: 1675828878
+      sprites_22: -1654618924
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

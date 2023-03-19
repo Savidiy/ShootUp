@@ -10,6 +10,7 @@ namespace LevelWindowModule
         private readonly PlayerHolder _playerHolder;
         private readonly BulletHolder _bulletHolder;
         private readonly GameSettings _gameSettings;
+        private bool _isMobilePressed;
 
         public PlayerShooter(TickInvoker tickInvoker, PlayerHolder playerHolder, BulletHolder bulletHolder,
             GameSettings gameSettings)
@@ -50,12 +51,15 @@ namespace LevelWindowModule
         {
             bool needShoot = false;
             foreach (KeyCode keyCode in _gameSettings.ShootKeys)
-            {
                 if (Input.GetKey(keyCode))
                     needShoot = true;
-            }
 
+            if (_isMobilePressed)
+                needShoot = true;
+            
             return needShoot;
         }
+
+        public void SetMobileShoot(bool isPressed) => _isMobilePressed = isPressed;
     }
 }

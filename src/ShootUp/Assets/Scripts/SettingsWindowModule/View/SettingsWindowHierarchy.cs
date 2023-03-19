@@ -7,5 +7,7 @@ namespace SettingsWindowModule.View
     {
         public Button BackButton;
         public Button ResetButton;
+        public Button KeyboardButton;
+        public Button MobileButton;
     }
 }

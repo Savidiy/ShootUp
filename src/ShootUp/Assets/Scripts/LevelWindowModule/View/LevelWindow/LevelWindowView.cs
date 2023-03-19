@@ -18,20 +18,23 @@ namespace LevelWindowModule.View
             BindClick(Hierarchy.RestartButton, OnRestartClick);
             BindClick(Hierarchy.NextLevelButton, OnRestartClick);
             BindClick(Hierarchy.ResetButton, OnResetClick);
+            Bind(Hierarchy.LeftButton.IsPressed, OnLeftButtonClick);
+            Bind(Hierarchy.RightButton.IsPressed, OnRightButtonClick);
+            Bind(Hierarchy.ShootButton.IsPressed, OnShootButtonClick);
+            
             Bind(viewModel.HeartCount, OnHeartCountChange);
             Bind(viewModel.IsWin, OnWinChange);
+            Bind(viewModel.IsMobileControl, OnMobileControlChange);
         }
 
-        private void OnRestartClick()
-        {
-            ViewModel.ClickRestartFromView();
-        }
+        private void OnShootButtonClick(bool isPressed) => ViewModel.PressShootFromView(isPressed);
+        private void OnRightButtonClick(bool isPressed) => ViewModel.PressRightFromView(isPressed);
+        private void OnLeftButtonClick(bool isPressed) => ViewModel.PressLeftFromView(isPressed);
+        private void OnRestartClick() => ViewModel.ClickRestartFromView();
+        private void OnResetClick() => ViewModel.ClickResetFromView();
 
-        private void OnResetClick()
-        {
-            ViewModel.ClickResetFromView();
-        }
-
+        private void OnMobileControlChange(bool obj) => Hierarchy.MobileInputContainer.SetActive(obj);
+        
         private void OnWinChange(bool isWin)
         {
             bool isComplete = ViewModel.IsComplete;

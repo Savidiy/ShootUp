@@ -33,5 +33,15 @@ namespace SettingsWindowModule
             NeedClose?.Invoke();
             _mainStateMachine.EnterToState<StartMainState>();
         }
+
+        public void SelectMobileFromView()
+        {
+            _progressProvider.SetControls(EControlType.Mobile);
+        }
+
+        public void SelectKeyboardFromView()
+        {
+            _progressProvider.SetControls(EControlType.Keyboard);
+        }
     }
 }

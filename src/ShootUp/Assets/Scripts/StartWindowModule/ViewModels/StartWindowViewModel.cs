@@ -1,5 +1,6 @@
 using MainModule;
 using MvvmModule;
+using Progress;
 using SettingsWindowModule.Contracts;
 using StartWindowModule.View;
 
@@ -9,24 +10,35 @@ namespace StartWindowModule
     {
         private readonly ISettingsWindowPresenter _settingsWindowPresenter;
         private readonly MainStateMachine _mainStateMachine;
+        private readonly ProgressProvider _progressProvider;
 
         public bool HasProgress { get; }
 
         public StartWindowViewModel(IViewModelFactory viewModelFactory, ISettingsWindowPresenter settingsWindowPresenter,
-            MainStateMachine mainStateMachine) : base(viewModelFactory)
+            MainStateMachine mainStateMachine, ProgressProvider progressProvider) : base(viewModelFactory)
         {
+            _progressProvider = progressProvider;
             _settingsWindowPresenter = settingsWindowPresenter;
             _mainStateMachine = mainStateMachine;
+            HasProgress = progressProvider.CurrentLevel > 0;
         }
 
         public void StartClickFromView()
         {
-            _mainStateMachine.EnterToState<LevelPlayMainState>();
+            StartGame();
         }
 
         public void ContinueClickFromView()
         {
-            _mainStateMachine.EnterToState<LevelPlayMainState>();
+            StartGame();
+        }
+
+        private void StartGame()
+        {
+            if (_progressProvider.SelectedControlType.Value == EControlType.NotSelected)
+                _mainStateMachine.EnterToState<SelectControlMainState>();
+            else
+                _mainStateMachine.EnterToState<LevelPlayMainState>();
         }
 
         public void SettingsClickFromView()

@@ -1,3 +1,4 @@
+using UiModule;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,5 +15,9 @@ namespace LevelWindowModule.View
         public Button NextLevelButton;
         public GameObject CompleteContainer;
         public Button ResetButton;
+        public GameObject MobileInputContainer;
+        public PressButton LeftButton;
+        public PressButton RightButton;
+        public PressButton ShootButton;
     }
 }

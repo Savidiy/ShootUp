@@ -12,23 +12,35 @@ namespace LevelWindowModule
         private readonly ISettingsWindowPresenter _settingsWindowPresenter;
         private readonly MainStateMachine _mainStateMachine;
         private readonly ProgressProvider _progressProvider;
+        private readonly PlayerMover _playerMover;
+        private readonly PlayerShooter _playerShooter;
         private readonly ReactiveProperty<bool> _isWin = new();
+        private readonly ReactiveProperty<bool> _isMobileControl = new ();
 
         public IReadOnlyReactiveProperty<int> HeartCount { get; }
         public IReadOnlyReactiveProperty<bool> IsWin => _isWin;
         public bool IsComplete { get; private set; }
+        public IReadOnlyReactiveProperty<bool> IsMobileControl => _isMobileControl;
 
         public LevelWindowViewModel(IViewModelFactory viewModelFactory, ISettingsWindowPresenter settingsWindowPresenter,
             PlayerHolder playerHolder, MainStateMachine mainStateMachine, EnemyAtLivesKiller enemyAtLivesKiller,
-            ProgressProvider progressProvider)
+            ProgressProvider progressProvider, PlayerMover playerMover, PlayerShooter playerShooter)
             : base(viewModelFactory)
         {
             _settingsWindowPresenter = settingsWindowPresenter;
             _mainStateMachine = mainStateMachine;
             _progressProvider = progressProvider;
+            _playerMover = playerMover;
+            _playerShooter = playerShooter;
             HeartCount = playerHolder.PlayerModel.HeartCount;
 
             AddDisposable(enemyAtLivesKiller.AllEnemiesDead.Subscribe(OnAllEnemyDeadNext));
+            AddDisposable(progressProvider.SelectedControlType.Subscribe(OnMobileControlChange));
+        }
+
+        private void OnMobileControlChange(EControlType controlType)
+        {
+            _isMobileControl.Value = controlType == EControlType.Mobile;
         }
 
         private void OnAllEnemyDeadNext(bool allEnemyDead)
@@ -52,5 +64,11 @@ namespace LevelWindowModule
             _progressProvider.ResetProgress();
             _mainStateMachine.EnterToState<StartMainState>();
         }
+
+        public void PressShootFromView(bool isPressed) => _playerShooter.SetMobileShoot(isPressed);
+
+        public void PressRightFromView(bool isPressed) => _playerMover.SetMobileRight(isPressed);
+
+        public void PressLeftFromView(bool isPressed) => _playerMover.SetMobileLeft(isPressed);
     }
 }

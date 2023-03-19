@@ -12,6 +12,8 @@ namespace SettingsWindowModule.View
         {
             BindClick(Hierarchy.ResetButton, OnResetButtonClick);
             BindClick(Hierarchy.BackButton, OnBackButtonClick);
+            BindClick(Hierarchy.KeyboardButton, OnKeyboardButtonClick);
+            BindClick(Hierarchy.MobileButton, OnMobileButtonClick);
         }
 
         private void OnBackButtonClick()
@@ -22,6 +24,16 @@ namespace SettingsWindowModule.View
         private void OnResetButtonClick()
         {
             ViewModel.ResetClickFromView();
+        }
+
+        private void OnMobileButtonClick()
+        {
+            ViewModel.SelectMobileFromView();
+        }
+
+        private void OnKeyboardButtonClick()
+        {
+            ViewModel.SelectKeyboardFromView();
         }
     }
 }

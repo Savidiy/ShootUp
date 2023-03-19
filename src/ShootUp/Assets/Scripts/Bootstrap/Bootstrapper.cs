@@ -8,12 +8,13 @@ namespace Bootstrap
         private readonly MainStateMachine _mainStateMachine;
 
         public Bootstrapper(MainStateMachine mainStateMachine, StartMainState startMainState,
-            LevelPlayMainState levelPlayMainState)
+            LevelPlayMainState levelPlayMainState, SelectControlMainState selectControlMainState)
         {
             _mainStateMachine = mainStateMachine;
 
             _mainStateMachine.AddState(startMainState);
             _mainStateMachine.AddState(levelPlayMainState);
+            _mainStateMachine.AddState(selectControlMainState);
         }
 
         public void Initialize()

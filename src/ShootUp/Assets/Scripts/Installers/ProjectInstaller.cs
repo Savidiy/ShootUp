@@ -30,10 +30,12 @@ namespace Installers
             Container.BindInterfacesTo<StartWindowPresenter>().AsSingle();
             Container.BindInterfacesTo<SettingsWindowPresenter>().AsSingle();
             Container.BindInterfacesTo<LevelWindowPresenter>().AsSingle();
+            Container.BindInterfacesTo<SelectControlsWindowPresenter>().AsSingle();
 
             Container.Bind<MainStateMachine>().AsSingle();
             Container.Bind<StartMainState>().AsSingle();
             Container.Bind<LevelPlayMainState>().AsSingle();
+            Container.Bind<SelectControlMainState>().AsSingle();
 
             Container.Bind<LevelHolder>().AsSingle();
             Container.Bind<ProgressProvider>().AsSingle();

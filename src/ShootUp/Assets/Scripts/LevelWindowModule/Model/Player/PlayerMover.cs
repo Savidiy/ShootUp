@@ -10,8 +10,11 @@ namespace LevelWindowModule
         private readonly GameSettings _gameSettings;
         private readonly BorderController _borderController;
         private readonly PlayerHolder _playerHolder;
+        private bool _isMobileRight;
+        private bool _isMobileLeft;
 
-        public PlayerMover(GameSettings gameSettings, TickInvoker tickInvoker, BorderController borderController, PlayerHolder playerHolder)
+        public PlayerMover(GameSettings gameSettings, TickInvoker tickInvoker, BorderController borderController,
+            PlayerHolder playerHolder)
         {
             _gameSettings = gameSettings;
             _tickInvoker = tickInvoker;
@@ -35,7 +38,7 @@ namespace LevelWindowModule
             PlayerModel playerModel = _playerHolder.PlayerModel;
             if (!playerModel.IsAlive)
                 return;
-            
+
             float halfPlayerWidth = playerModel.GetWidth / 2;
             float positionX = playerModel.PositionX;
 
@@ -67,6 +70,12 @@ namespace LevelWindowModule
                 if (Input.GetKey(keyCode))
                     moveToLeft = true;
 
+            if (_isMobileLeft)
+                moveToLeft = true;
+
+            if (_isMobileRight)
+                moveToRight = true;
+
             if (!moveToLeft && moveToRight)
                 return deltaX;
 
@@ -75,5 +84,8 @@ namespace LevelWindowModule
 
             return 0;
         }
+
+        public void SetMobileRight(bool isMobileRight) => _isMobileRight = isMobileRight;
+        public void SetMobileLeft(bool isMobileLeft) => _isMobileLeft = isMobileLeft;
     }
 }

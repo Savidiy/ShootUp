@@ -6,5 +6,7 @@ namespace SettingsWindowModule.View
     {
         void BackClickFromView();
         void ResetClickFromView();
+        void SelectMobileFromView();
+        void SelectKeyboardFromView();
     }
 }
