@@ -19,6 +19,9 @@ namespace SettingsModule
         public KeyCode[] RightKeys;
         public KeyCode[] LeftKeys;
         public float PlayerSpeed = 4;
+        public float StartInvulDuration = 2;
+        public float HitInvulDuration = 2;
+        public float BlinkPeriod = 0.1f;
     }
 
     [Serializable]

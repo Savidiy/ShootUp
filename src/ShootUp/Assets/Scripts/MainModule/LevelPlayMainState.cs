@@ -12,9 +12,11 @@ namespace MainModule
         private readonly EnemyMover _enemyMover;
         private readonly PlayerHolder _playerHolder;
         private readonly PlayerMover _playerMover;
+        private readonly EnemyAttackExecutor _enemyAttackExecutor;
 
         public LevelPlayMainState(ILevelWindowPresenter levelWindowPresenter, LevelHolder levelHolder,
-            BorderController borderController, EnemyMover enemyMover, PlayerHolder playerHolder, PlayerMover playerMover)
+            BorderController borderController, EnemyMover enemyMover, PlayerHolder playerHolder, PlayerMover playerMover,
+            EnemyAttackExecutor enemyAttackExecutor)
         {
             _levelWindowPresenter = levelWindowPresenter;
             _levelHolder = levelHolder;
@@ -22,6 +24,7 @@ namespace MainModule
             _enemyMover = enemyMover;
             _playerHolder = playerHolder;
             _playerMover = playerMover;
+            _enemyAttackExecutor = enemyAttackExecutor;
         }
 
         public void Enter()
@@ -29,6 +32,7 @@ namespace MainModule
             _levelHolder.LoadCurrentLevel();
             _borderController.UpdateBorders();
             _playerHolder.ResetPlayer();
+            _enemyAttackExecutor.Activate();
             _playerMover.Activate();
             _enemyMover.Activate();
             _levelWindowPresenter.ShowWindow();
@@ -36,6 +40,7 @@ namespace MainModule
 
         public void Exit()
         {
+            _enemyAttackExecutor.Deactivate();
             _playerMover.Deactivate();
             _enemyMover.Deactivate();
             _levelWindowPresenter.HideWindow();

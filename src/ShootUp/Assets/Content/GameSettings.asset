@@ -24,3 +24,6 @@ MonoBehaviour:
   RightKeys: 6400000013010000
   LeftKeys: 6100000014010000
   PlayerSpeed: 4
+  StartInvulDuration: 2
+  HitInvulDuration: 2
+  BlinkPeriod: 0.2

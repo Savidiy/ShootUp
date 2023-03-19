@@ -15,7 +15,7 @@ namespace LevelWindowModule
         private GameSettings _gameSettings;
 
         public EnemyMover(GameSettings gameSettings, TickInvoker tickInvoker, BorderController borderController,
-            CameraProvider cameraProvider)
+            CameraProvider cameraProvider, EnemiesHolder enemiesHolder)
         {
             _gameSettings = gameSettings;
             _tickInvoker = tickInvoker;
@@ -23,6 +23,7 @@ namespace LevelWindowModule
             _cameraProvider = cameraProvider;
 
             _enemyHierarchy = Object.FindObjectOfType<EnemyHierarchy>();
+            enemiesHolder.Add(new Enemy(_enemyHierarchy));
         }
 
         public void Activate()

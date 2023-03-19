@@ -41,6 +41,8 @@ namespace Installers
 
             Container.Bind<PlayerHolder>().AsSingle();
             Container.Bind<PlayerMover>().AsSingle();
+            Container.Bind<EnemyAttackExecutor>().AsSingle();
+            Container.Bind<EnemiesHolder>().AsSingle();
             Container.Bind<EnemyMover>().AsSingle();
             Container.Bind<BorderController>().AsSingle();
             Container.Bind<CameraProvider>().AsSingle();
