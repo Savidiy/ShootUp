@@ -18,7 +18,7 @@ namespace Bootstrap
 
         public void Initialize()
         {
-            _mainStateMachine.EnterToState<LevelPlayMainState>();
+            _mainStateMachine.EnterToState<StartMainState>();
         }
     }
 }

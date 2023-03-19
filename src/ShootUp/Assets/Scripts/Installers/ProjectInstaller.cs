@@ -37,7 +37,6 @@ namespace Installers
 
             Container.Bind<LevelHolder>().AsSingle();
             Container.Bind<ProgressProvider>().AsSingle();
-            Container.Bind<ProgressSaver>().AsSingle();
             Container.Bind<LevelModelFactory>().AsSingle();
 
             Container.Bind<PlayerShooter>().AsSingle();

@@ -41,7 +41,7 @@ MonoBehaviour:
   LeftKeys: 6100000014010000
   ShootKeys: 11010000120100007700000073000000320100003101000020000000
   PlayerSpeed: 4
-  StartInvulDuration: 2
+  StartInvulDuration: 4
   HitInvulDuration: 2
   BlinkPeriod: 0.2
   PlayerShootCooldown: 0.2

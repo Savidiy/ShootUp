@@ -18,7 +18,7 @@ namespace LevelWindowModule
 
         public LevelModel Create(LevelData levelData)
         {
-            var levelModel = new LevelModel(levelData, _tickInvoker, _enemiesHolder, _enemyFactory);
+            var levelModel = new LevelModel(levelData, _enemiesHolder, _enemyFactory);
             return levelModel;
         }
     }

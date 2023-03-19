@@ -16,12 +16,29 @@ namespace LevelWindowModule.View
         {
             BindClick(Hierarchy.SettingsButton, OnSettingsClick);
             BindClick(Hierarchy.RestartButton, OnRestartClick);
+            BindClick(Hierarchy.NextLevelButton, OnRestartClick);
+            BindClick(Hierarchy.ResetButton, OnResetClick);
             Bind(viewModel.HeartCount, OnHeartCountChange);
+            Bind(viewModel.IsWin, OnWinChange);
         }
 
         private void OnRestartClick()
         {
             ViewModel.ClickRestartFromView();
+        }
+
+        private void OnResetClick()
+        {
+            ViewModel.ClickResetFromView();
+        }
+
+        private void OnWinChange(bool isWin)
+        {
+            bool isComplete = ViewModel.IsComplete;
+            Hierarchy.CompleteContainer.SetActive(isComplete);
+
+            bool hasNextLevel = isWin && !isComplete;
+            Hierarchy.NextLevelContainer.SetActive(hasNextLevel);
         }
 
         private void OnHeartCountChange(int heartCount)

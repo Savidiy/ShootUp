@@ -23,8 +23,15 @@ namespace LevelWindowModule
             LevelModel?.Dispose();
 
             int currentLevel = _progressProvider.CurrentLevel;
-            LevelData levelData = _gameSettings.Levels[currentLevel];
-            LevelModel = _levelModelFactory.Create(levelData);
+            if (currentLevel < _gameSettings.Levels.Count)
+            {
+                LevelData levelData = _gameSettings.Levels[currentLevel];
+                LevelModel = _levelModelFactory.Create(levelData);
+            }
+            else
+            {
+                LevelModel = LevelModel.CreateEmpty();
+            }
         }
     }
 }
