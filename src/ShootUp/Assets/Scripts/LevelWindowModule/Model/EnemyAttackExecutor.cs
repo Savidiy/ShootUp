@@ -1,5 +1,4 @@
 ﻿using Savidiy.Utils;
-using SettingsModule;
 using UnityEngine;
 
 namespace LevelWindowModule
@@ -40,7 +39,7 @@ namespace LevelWindowModule
                 ColliderDistance2D colliderDistance2D = Physics2D.Distance(playerCollider, enemyCollider);
                 if (colliderDistance2D.isOverlapped)
                 {
-                    _playerHolder.GetHit();
+                    _playerHolder.PlayerModel.GetHit();
                 }
             }
         }

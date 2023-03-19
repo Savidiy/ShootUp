@@ -26,6 +26,7 @@ namespace SettingsModule
         public float PlayerShootCooldown = 0.2f;
         public BulletHierarchy BulletPrefab;
         public float BulletSpeed = 7f;
+        public int StartHeartCount = 5;
     }
 
     [Serializable]

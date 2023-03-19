@@ -30,12 +30,7 @@ namespace LevelWindowModule
             float startY = PlayerModel.GetHeight / 2 + _borderController.MinY;
             PlayerModel.SetPositionY(startY);
             PlayerModel.SetInvulnerableTimer(_gameSettings.StartInvulDuration);
-        }
-
-        public void GetHit()
-        {
-            Debug.Log("Get Hit");
-            PlayerModel.SetInvulnerableTimer(_gameSettings.HitInvulDuration);
+            PlayerModel.SetHeartCount(_gameSettings.StartHeartCount);
         }
 
         public void Dispose()

@@ -1,4 +1,5 @@
 ﻿using SettingsModule;
+using UniRx;
 using UnityEngine;
 
 namespace LevelWindowModule
@@ -10,6 +11,7 @@ namespace LevelWindowModule
         private float _invulnerableTimer;
         private float _blinkTimer;
         private float _shootCooldown;
+        private readonly ReactiveProperty<int> _heartCount = new();
 
         public float PositionX { get; private set; }
         public float GetWidth => _playerHierarchy.SpriteRenderer.bounds.size.x;
@@ -18,6 +20,8 @@ namespace LevelWindowModule
         public Collider2D Collider => _playerHierarchy.Collider;
         public Vector3 BulletStartPosition => _playerHierarchy.BulletStartPosition.position;
         public bool CanShoot => _shootCooldown <= 0;
+
+        public IReadOnlyReactiveProperty<int> HeartCount => _heartCount;
 
         public PlayerModel(PlayerHierarchy playerHierarchy, GameSettings gameSettings)
         {
@@ -41,10 +45,23 @@ namespace LevelWindowModule
             _playerHierarchy.transform.position = position;
         }
 
+        public void SetHeartCount(int heartCount)
+        {
+            if (heartCount < 0)
+                heartCount = 0;
+            _heartCount.Value = heartCount;
+        }
+
         public void SetInvulnerableTimer(float duration)
         {
             _invulnerableTimer = duration;
             _blinkTimer = _gameSettings.BlinkPeriod;
+        }
+
+        public void GetHit()
+        {
+            SetHeartCount(_heartCount.Value - 1);
+            SetInvulnerableTimer(_gameSettings.HitInvulDuration);
         }
 
         public void Update(float deltaTime)
