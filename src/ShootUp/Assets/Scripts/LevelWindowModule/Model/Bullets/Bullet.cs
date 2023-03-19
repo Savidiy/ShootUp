@@ -8,6 +8,7 @@ namespace LevelWindowModule
         private readonly BulletHierarchy _bulletHierarchy;
 
         public Vector3 Position => _bulletHierarchy.transform.position;
+        public Collider2D Collider => _bulletHierarchy.Collider;
 
         public Bullet(BulletHierarchy bulletHierarchy, Vector3 bulletStartPosition)
         {

@@ -46,8 +46,10 @@ namespace Installers
             Container.Bind<BulletHolder>().AsSingle();
             Container.Bind<BulletMover>().AsSingle();
             Container.Bind<BulletAtBorderKiller>().AsSingle();
+            Container.Bind<BulletAtEnemyChecker>().AsSingle();
             
             Container.Bind<EnemyAttackExecutor>().AsSingle();
+            Container.Bind<EnemyAtLivesKiller>().AsSingle();
             Container.Bind<EnemiesHolder>().AsSingle();
             Container.Bind<EnemyMover>().AsSingle();
             Container.Bind<EnemyFactory>().AsSingle();

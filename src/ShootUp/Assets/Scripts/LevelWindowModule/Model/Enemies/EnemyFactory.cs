@@ -9,11 +9,13 @@ namespace LevelWindowModule
     {
         private readonly EnemyPrefabProvider _enemyPrefabProvider;
         private readonly BorderController _borderController;
+        private readonly GameSettings _gameSettings;
 
-        public EnemyFactory(EnemyPrefabProvider enemyPrefabProvider, BorderController borderController)
+        public EnemyFactory(EnemyPrefabProvider enemyPrefabProvider, BorderController borderController, GameSettings gameSettings)
         {
             _enemyPrefabProvider = enemyPrefabProvider;
             _borderController = borderController;
+            _gameSettings = gameSettings;
         }
 
         public Enemy CreateEnemy(EnemySpawnData enemySpawnData)
@@ -33,7 +35,20 @@ namespace LevelWindowModule
             var position = new Vector3(x, y, 0);
 
             enemy.SetPosition(position);
+
+            int lives = GetStartEnemyLives(enemyType);
+            enemy.SetLives(lives);
             return enemy;
+        }
+
+        private int GetStartEnemyLives(EEnemyType enemyType)
+        {
+            if (_gameSettings.EnemyLives.TryGetValue(enemyType, out int lives))
+            {
+                return lives;
+            }
+
+            throw new Exception($"Can't find start lives for '{enemyType}'");
         }
 
         private EnemyHierarchy InstantiateHierarchy(EEnemyType enemyType)

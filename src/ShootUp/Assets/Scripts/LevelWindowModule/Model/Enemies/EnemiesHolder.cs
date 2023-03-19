@@ -12,5 +12,22 @@ namespace LevelWindowModule
         {
             _enemies.Add(enemy);
         }
+
+        public void Clear()
+        {
+            foreach (Enemy enemy in _enemies)
+            {
+                enemy.Destroy();
+            }
+            
+            _enemies.Clear();
+        }
+
+        public void RemoveAt(int index)
+        {
+            Enemy enemy = _enemies[index];
+            enemy.Destroy();
+            _enemies.RemoveAt(index);
+        }
     }
 }

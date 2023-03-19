@@ -17,7 +17,7 @@ namespace LevelWindowModule
             _gameSettings = gameSettings;
             _bulletRoot = new GameObject("BulletRoot");
         }
-        
+
         public void AddPlayerBulletAt(Vector3 bulletStartPosition)
         {
             var bulletHierarchy = Object.Instantiate(_gameSettings.BulletPrefab, _bulletRoot.transform);
@@ -31,6 +31,14 @@ namespace LevelWindowModule
             Bullet bullet = _bullets[index];
             _bullets.RemoveAt(index);
             bullet.Destroy();
+        }
+
+        public void Clear()
+        {
+            for (var index = _bullets.Count - 1; index >= 0; index--)
+            {
+                RemoveBulletAt(index);
+            }
         }
     }
 }

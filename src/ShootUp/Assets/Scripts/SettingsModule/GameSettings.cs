@@ -28,6 +28,7 @@ namespace SettingsModule
         public BulletHierarchy BulletPrefab;
         public float BulletSpeed = 7f;
         public int StartHeartCount = 5;
+        public EnemyInt EnemyLives;
     }
 
     [Serializable]
@@ -40,9 +41,16 @@ namespace SettingsModule
     public class EnemySpawnData
     {
         public EEnemyType EnemyType;
+
         [Range(0, 1)]
         public float PositionPercentX;
+
         [Range(0, 1)]
         public float PositionPercentY = 0.9f;
+    }
+
+    [Serializable]
+    public class EnemyInt : SerializedDictionary<EEnemyType, int>
+    {
     }
 }

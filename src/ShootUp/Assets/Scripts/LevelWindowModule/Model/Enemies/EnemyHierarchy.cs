@@ -1,4 +1,3 @@
-using Savidiy.Utils;
 using UnityEngine;
 
 namespace LevelWindowModule
@@ -8,7 +7,4 @@ namespace LevelWindowModule
         public SpriteRenderer SpriteRenderer;
         public Collider2D Collider;
     }
-
-    
-    
 }

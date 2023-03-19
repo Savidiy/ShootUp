@@ -19,7 +19,17 @@ MonoBehaviour:
       PositionPercentY: 0.9
     - EnemyType: 0
       PositionPercentX: 0.183
-      PositionPercentY: 0.783
+      PositionPercentY: 1
+  - Enemies:
+    - EnemyType: 0
+      PositionPercentX: 0.084
+      PositionPercentY: 0.9
+    - EnemyType: 0
+      PositionPercentX: 0.299
+      PositionPercentY: 0.9
+    - EnemyType: 0
+      PositionPercentX: 0.745
+      PositionPercentY: 0.9
   LeftBorderShift: 0
   BottomBorderShift: 10
   RightBorderShift: 0
@@ -37,4 +47,7 @@ MonoBehaviour:
   PlayerShootCooldown: 0.2
   BulletPrefab: {fileID: 4649614719101894754, guid: 202f44a6e288fc246899be88099737a6, type: 3}
   BulletSpeed: 7
-  StartHeartCount: 2
+  StartHeartCount: 5
+  EnemyLives:
+    keyData: 00000000010000000200000003000000
+    valueData: 05000000050000000500000005000000
