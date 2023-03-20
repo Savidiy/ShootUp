@@ -9,5 +9,7 @@ namespace SettingsWindowModule.View
         public Button ResetButton;
         public Button KeyboardButton;
         public Button MobileButton;
+        public Slider MusicVolume;
+        public Slider SoundVolume;
     }
 }

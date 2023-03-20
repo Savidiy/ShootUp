@@ -10,30 +10,27 @@ namespace SettingsWindowModule.View
 
         protected override void UpdateViewModel(ISettingsWindowViewModel viewModel)
         {
+            Hierarchy.SoundVolume.value = viewModel.SoundVolume;
+            Hierarchy.MusicVolume.value = viewModel.MusicVolume;
+                
             BindClick(Hierarchy.ResetButton, OnResetButtonClick);
             BindClick(Hierarchy.BackButton, OnBackButtonClick);
             BindClick(Hierarchy.KeyboardButton, OnKeyboardButtonClick);
             BindClick(Hierarchy.MobileButton, OnMobileButtonClick);
+            BindSlider(Hierarchy.MusicVolume, OnMusicVolumeSet);
+            BindSlider(Hierarchy.SoundVolume, OnSoundVolumeSet);
         }
 
-        private void OnBackButtonClick()
-        {
-            ViewModel.BackClickFromView();
-        }
+        private void OnSoundVolumeSet(float volume) => ViewModel.SetSoundVolumeFromView(volume);
 
-        private void OnResetButtonClick()
-        {
-            ViewModel.ResetClickFromView();
-        }
+        private void OnMusicVolumeSet(float volume) => ViewModel.SetMusicVolumeFromView(volume);
 
-        private void OnMobileButtonClick()
-        {
-            ViewModel.SelectMobileFromView();
-        }
+        private void OnBackButtonClick() => ViewModel.BackClickFromView();
 
-        private void OnKeyboardButtonClick()
-        {
-            ViewModel.SelectKeyboardFromView();
-        }
+        private void OnResetButtonClick() => ViewModel.ResetClickFromView();
+
+        private void OnMobileButtonClick() => ViewModel.SelectMobileFromView();
+
+        private void OnKeyboardButtonClick() => ViewModel.SelectKeyboardFromView();
     }
 }

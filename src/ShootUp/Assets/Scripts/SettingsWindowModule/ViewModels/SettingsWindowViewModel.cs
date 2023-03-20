@@ -1,4 +1,5 @@
 using System;
+using AudioModule;
 using MainModule;
 using MvvmModule;
 using Progress;
@@ -10,22 +11,26 @@ namespace SettingsWindowModule
     {
         private readonly ProgressProvider _progressProvider;
         private readonly MainStateMachine _mainStateMachine;
+        private readonly AudioSettings _audioSettings;
         private readonly Type _returnStateType;
 
         public event Action NeedClose;
-
+        public float SoundVolume { get; }
+        public float MusicVolume { get; }
+        
         public SettingsWindowViewModel(IViewModelFactory viewModelFactory, ProgressProvider progressProvider,
-            MainStateMachine mainStateMachine)
+            MainStateMachine mainStateMachine, AudioSettings audioSettings)
             : base(viewModelFactory)
         {
             _progressProvider = progressProvider;
             _mainStateMachine = mainStateMachine;
+            _audioSettings = audioSettings;
+
+            SoundVolume = audioSettings.SoundVolume.Value;
+            MusicVolume = audioSettings.MusicVolume.Value;
         }
 
-        public void BackClickFromView()
-        {
-            NeedClose?.Invoke();
-        }
+        public void BackClickFromView() => NeedClose?.Invoke();
 
         public void ResetClickFromView()
         {
@@ -34,14 +39,12 @@ namespace SettingsWindowModule
             _mainStateMachine.EnterToState<StartMainState>();
         }
 
-        public void SelectMobileFromView()
-        {
-            _progressProvider.SetControls(EControlType.Mobile);
-        }
+        public void SelectMobileFromView() => _progressProvider.SetControls(EControlType.Mobile);
 
-        public void SelectKeyboardFromView()
-        {
-            _progressProvider.SetControls(EControlType.Keyboard);
-        }
+        public void SelectKeyboardFromView() => _progressProvider.SetControls(EControlType.Keyboard);
+
+        public void SetSoundVolumeFromView(float volume) => _audioSettings.SetSoundVolume(volume);
+
+        public void SetMusicVolumeFromView(float volume) => _audioSettings.SetMusicVolume(volume);
     }
 }

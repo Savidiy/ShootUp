@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace LevelWindowModule
 {
-    public class CameraProvider
+    public class CameraProvider : ICameraProvider
     {
         public Camera Camera { get; }
         public float CameraPixelWidth => Camera.pixelWidth;

@@ -1,4 +1,5 @@
 using MvvmModule;
+using UniRx;
 
 namespace SettingsWindowModule.View
 {
@@ -8,5 +9,9 @@ namespace SettingsWindowModule.View
         void ResetClickFromView();
         void SelectMobileFromView();
         void SelectKeyboardFromView();
+        void SetSoundVolumeFromView(float volume);
+        void SetMusicVolumeFromView(float volume);
+        float SoundVolume { get; }
+        float MusicVolume { get; }
     }
 }

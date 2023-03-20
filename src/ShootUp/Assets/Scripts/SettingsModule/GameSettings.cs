@@ -4,6 +4,7 @@ using LevelWindowModule;
 using Savidiy.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace SettingsModule
 {
@@ -31,6 +32,9 @@ namespace SettingsModule
         public float BulletSpeed = 7f;
         public int StartHeartCount = 5;
         public EnemyInt EnemyLives;
+        public float DefaultMusicVolume = 0.5f;
+        public float DefaultSoundVolume = 0.5f;
+        public AudioClip MusicClip;
 
         public Vector2 GetSpeed(EEnemyType enemyType)
         {

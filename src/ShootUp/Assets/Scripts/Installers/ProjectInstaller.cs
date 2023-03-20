@@ -1,3 +1,4 @@
+using AudioModule;
 using Bootstrap;
 using LevelWindowModule;
 using MainModule;
@@ -59,7 +60,10 @@ namespace Installers
             Container.BindInterfacesTo<EnemySquareMover>().AsSingle();
             
             Container.Bind<BorderController>().AsSingle();
-            Container.Bind<CameraProvider>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CameraProvider>().AsSingle();
+            
+            Container.BindInterfacesAndSelfTo<AudioSettings>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MusicVolumeController>().AsSingle();
 
             Container.Bind<GameSettings>().FromInstance(GameSettings);
             Container.Bind<EnemyPrefabProvider>().FromInstance(EnemyPrefabProvider);
