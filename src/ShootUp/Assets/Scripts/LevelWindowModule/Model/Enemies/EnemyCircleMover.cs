@@ -29,8 +29,6 @@ namespace LevelWindowModule
             float speedX = _gameSettings.CircleSpeedX.Evaluate(percentY) * speed.x;
             float deltaX = speedX * deltaTime * (data.IsMoveRight ? 1 : -1);
 
-            Debug.Log($"percentY={percentY:f2}   speedX={speedX:f2}");
-            
             float newX = position.x + deltaX;
 
             float shiftX = enemy.Width / 2;

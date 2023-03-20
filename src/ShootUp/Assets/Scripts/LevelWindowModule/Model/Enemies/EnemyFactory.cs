@@ -58,16 +58,17 @@ namespace LevelWindowModule
             return hierarchy;
         }
 
-        private IEnemyMoveData CreateMoveData(EnemySpawnData enemySpawnData)
+        private IEnemyMoveData CreateMoveData(EnemySpawnData data)
         {
-            switch (enemySpawnData.EnemyType)
+            switch (data.EnemyType)
             {
                 case EEnemyType.Circle:
-                    return new CircleMoveData(enemySpawnData.IsMoveRight, enemySpawnData.IsMoveUp, enemySpawnData.MaxY);
+                    return new CircleMoveData(data.IsMoveRight, data.IsMoveUp, data.MaxY);
                 case EEnemyType.Triangle:
                 case EEnemyType.Square:
+                    return new SquareMoveData(data.IsClockwise, data.MinX, data.MaxX, data.MinY, data.MaxY, data.StartTimer, data.Duration);
                 case EEnemyType.Romb:
-                    return new RombMoveData(enemySpawnData.IsMoveRight, enemySpawnData.IsMoveUp);
+                    return new RombMoveData(data.IsMoveRight, data.IsMoveUp);
                 default:
                     throw new ArgumentOutOfRangeException();
             }

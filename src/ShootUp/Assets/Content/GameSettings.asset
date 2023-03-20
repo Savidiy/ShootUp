@@ -15,54 +15,158 @@ MonoBehaviour:
   Levels:
   - Enemies:
     - EnemyType: 0
+      PositionPercentX: 0.255
+      PositionPercentY: 0
+      IsMoveRight: 1
+      IsMoveUp: 0
+      IsClockwise: 0
+      StartTimer: 0
+      Duration: 0
+      MinX: 0
+      MaxX: 0
+      MinY: 0
+      MaxY: 0.854
+    - EnemyType: 1
+      PositionPercentX: 0.241
+      PositionPercentY: 0.833
+      IsMoveRight: 1
+      IsMoveUp: 1
+      IsClockwise: 0
+      StartTimer: 0
+      Duration: 0
+      MinX: 0
+      MaxX: 0
+      MinY: 0
+      MaxY: 0
+    - EnemyType: 1
+      PositionPercentX: 0.457
+      PositionPercentY: 0.833
+      IsMoveRight: 1
+      IsMoveUp: 1
+      IsClockwise: 0
+      StartTimer: 0
+      Duration: 0
+      MinX: 0
+      MaxX: 0
+      MinY: 0
+      MaxY: 0
+  - Enemies:
+    - EnemyType: 0
       PositionPercentX: 0.088
       PositionPercentY: 0
       IsMoveRight: 1
       IsMoveUp: 1
+      IsClockwise: 0
+      StartTimer: 0
+      Duration: 0
+      MinX: 0
+      MaxX: 0
+      MinY: 0
       MaxY: 0.763
     - EnemyType: 0
       PositionPercentX: 0.916
       PositionPercentY: 0
       IsMoveRight: 0
       IsMoveUp: 1
+      IsClockwise: 0
+      StartTimer: 0
+      Duration: 0
+      MinX: 0
+      MaxX: 0
+      MinY: 0
       MaxY: 1
   - Enemies:
-    - EnemyType: 0
-      PositionPercentX: 0.743
+    - EnemyType: 1
+      PositionPercentX: 0.395
+      PositionPercentY: 0.492
+      IsMoveRight: 0
+      IsMoveUp: 0
+      IsClockwise: 0
+      StartTimer: 0
+      Duration: 0
+      MinX: 0
+      MaxX: 0
+      MinY: 0
+      MaxY: 0
+    - EnemyType: 1
+      PositionPercentX: 0.617
+      PositionPercentY: 0.534
+      IsMoveRight: 1
+      IsMoveUp: 0
+      IsClockwise: 0
+      StartTimer: 0
+      Duration: 4
+      MinX: 0
+      MaxX: 1
+      MinY: 0
+      MaxY: 1
+  - Enemies:
+    - EnemyType: 3
+      PositionPercentX: 0.5
       PositionPercentY: 0.9
       IsMoveRight: 0
       IsMoveUp: 0
-      MaxY: 0
-    - EnemyType: 1
-      PositionPercentX: 0.183
-      PositionPercentY: 1
-      IsMoveRight: 1
+      IsClockwise: 0
+      StartTimer: 0
+      Duration: 10
+      MinX: 0.207
+      MaxX: 0.886
+      MinY: 0.318
+      MaxY: 0.798
+    - EnemyType: 3
+      PositionPercentX: 0.5
+      PositionPercentY: 0.9
+      IsMoveRight: 0
       IsMoveUp: 0
-      MaxY: 0
+      IsClockwise: 1
+      StartTimer: 0
+      Duration: 5
+      MinX: 0.388
+      MaxX: 0.576
+      MinY: 0.095
+      MaxY: 0.854
   - Enemies:
     - EnemyType: 2
       PositionPercentX: 0.084
       PositionPercentY: 0.9
       IsMoveRight: 0
       IsMoveUp: 0
+      IsClockwise: 0
+      StartTimer: 0
+      Duration: 0
+      MinX: 0
+      MaxX: 0
+      MinY: 0
       MaxY: 0
     - EnemyType: 0
       PositionPercentX: 0.299
       PositionPercentY: 0.9
       IsMoveRight: 0
       IsMoveUp: 0
+      IsClockwise: 0
+      StartTimer: 0
+      Duration: 0
+      MinX: 0
+      MaxX: 0
+      MinY: 0
       MaxY: 0
     - EnemyType: 3
       PositionPercentX: 0.745
       PositionPercentY: 0.9
       IsMoveRight: 0
       IsMoveUp: 0
+      IsClockwise: 0
+      StartTimer: 0
+      Duration: 0
+      MinX: 0
+      MaxX: 0
+      MinY: 0
       MaxY: 0
   LeftBorderShift: 0
   BottomBorderShift: 10
   RightBorderShift: 0
   BorderScaleFactor: 5
-  UpLimitPixelShift: 50
+  UpLimitPixelShift: 10
   EnemySpeed:
     keyData: 00000000010000000200000003000000
     valueData:
@@ -149,4 +253,4 @@ MonoBehaviour:
   StartHeartCount: 5
   EnemyLives:
     keyData: 00000000010000000200000003000000
-    valueData: 05000000050000000500000005000000
+    valueData: 0500000005000000050000000a000000

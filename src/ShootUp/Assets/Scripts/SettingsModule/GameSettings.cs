@@ -60,14 +60,22 @@ namespace SettingsModule
         [Range(0, 1)]
         public float PositionPercentY = 0.9f;
 
-        [ShowIf(nameof(IsRomb)), ShowIf(nameof(IsCircle))] public bool IsMoveRight;
-        [ShowIf(nameof(IsRomb)), ShowIf(nameof(IsCircle))] public bool IsMoveUp;
-        [Range(0, 1), ShowIf(nameof(IsCircle))] public float MaxY;
+        [ShowIf(nameof(IsRombOrCircle))] public bool IsMoveRight;
+        [ShowIf(nameof(IsRombOrCircle))] public bool IsMoveUp;
+        [ShowIf(nameof(IsSquare))] public bool IsClockwise;
+        [ShowIf(nameof(IsSquare))] public float StartTimer;
+        [ShowIf(nameof(IsSquare))] public float Duration = 4;
+        [Range(0, 1), ShowIf(nameof(IsSquare))] public float MinX;
+        [Range(0, 1), ShowIf(nameof(IsSquare))] public float MaxX = 1;
+        [Range(0, 1), ShowIf(nameof(IsSquare))] public float MinY;
+        [Range(0, 1), ShowIf(nameof(IsCircleOrSquare))] public float MaxY = 1;
 
+        private bool IsRombOrCircle() => EnemyType is EEnemyType.Romb or EEnemyType.Circle;
         private bool IsRomb() => EnemyType == EEnemyType.Romb;
         private bool IsSquare() => EnemyType == EEnemyType.Square;
         private bool IsTriangle() => EnemyType == EEnemyType.Triangle;
         private bool IsCircle() => EnemyType == EEnemyType.Circle;
+        private bool IsCircleOrSquare() => EnemyType is EEnemyType.Circle or EEnemyType.Square;
     }
 
     [Serializable]
