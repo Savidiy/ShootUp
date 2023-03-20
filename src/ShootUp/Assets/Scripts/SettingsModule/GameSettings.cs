@@ -66,9 +66,9 @@ namespace SettingsModule
         [ShowIf(nameof(IsSquare))] public float StartTimer;
         [ShowIf(nameof(IsSquare))] public float Duration = 4;
         [Range(0, 1), ShowIf(nameof(IsSquare))] public float MinX;
-        [Range(0, 1), ShowIf(nameof(IsSquare))] public float MaxX = 1;
+        [Range(0, 1), ShowIf(nameof(IsSquare))] public float MaxX = 1f;
         [Range(0, 1), ShowIf(nameof(IsSquare))] public float MinY;
-        [Range(0, 1), ShowIf(nameof(IsCircleOrSquare))] public float MaxY = 1;
+        [Range(0, 1), ShowIf(nameof(IsCircleOrSquare))] public float MaxY = 1f;
 
         private bool IsRombOrCircle() => EnemyType is EEnemyType.Romb or EEnemyType.Circle;
         private bool IsRomb() => EnemyType == EEnemyType.Romb;
