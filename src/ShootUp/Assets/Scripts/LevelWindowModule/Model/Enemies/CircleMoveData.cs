@@ -1,12 +1,14 @@
 ﻿namespace LevelWindowModule
 {
-    public class RombMoveData : IEnemyMoveData
+    public class CircleMoveData : IEnemyMoveData
     {
+        public float MaxY { get; }
         public bool IsMoveRight;
         public bool IsMoveUp;
 
-        public RombMoveData(bool isMoveRight, bool isMoveUp)
+        public CircleMoveData(bool isMoveRight, bool isMoveUp, float maxY)
         {
+            MaxY = maxY;
             IsMoveRight = isMoveRight;
             IsMoveUp = isMoveUp;
         }

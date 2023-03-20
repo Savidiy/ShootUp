@@ -55,6 +55,7 @@ namespace Installers
             Container.Bind<EnemyMover>().AsSingle();
             Container.Bind<EnemyFactory>().AsSingle();
             Container.BindInterfacesTo<EnemyRombMover>().AsSingle();
+            Container.BindInterfacesTo<EnemyCircleMover>().AsSingle();
             
             Container.Bind<BorderController>().AsSingle();
             Container.Bind<CameraProvider>().AsSingle();

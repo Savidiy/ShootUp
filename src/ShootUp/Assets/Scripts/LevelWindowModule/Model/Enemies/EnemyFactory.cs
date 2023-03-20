@@ -23,8 +23,8 @@ namespace LevelWindowModule
             EEnemyType enemyType = enemySpawnData.EnemyType;
             EnemyHierarchy hierarchy = InstantiateHierarchy(enemyType);
 
-            IEnemyMoveData asd = CreateMoveData(enemySpawnData);
-            var enemy = new Enemy(hierarchy, asd);
+            IEnemyMoveData enemyMoveData = CreateMoveData(enemySpawnData);
+            var enemy = new Enemy(hierarchy, enemyMoveData, enemyType);
 
             float maxX = _borderController.MaxX;
             float maxY = _borderController.MaxY;
@@ -63,10 +63,11 @@ namespace LevelWindowModule
             switch (enemySpawnData.EnemyType)
             {
                 case EEnemyType.Circle:
-                case EEnemyType.Romb:
+                    return new CircleMoveData(enemySpawnData.IsMoveRight, enemySpawnData.IsMoveUp, enemySpawnData.MaxY);
                 case EEnemyType.Triangle:
                 case EEnemyType.Square:
-                    return new RombMoveData();
+                case EEnemyType.Romb:
+                    return new RombMoveData(enemySpawnData.IsMoveRight, enemySpawnData.IsMoveUp);
                 default:
                     throw new ArgumentOutOfRangeException();
             }

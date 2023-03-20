@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using LevelWindowModule;
 using Savidiy.Utils;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace SettingsModule
@@ -15,11 +16,12 @@ namespace SettingsModule
         public float RightBorderShift;
         public float BorderScaleFactor = 5;
         public float UpLimitPixelShift = 50;
-        public float SpeedX = 20f;
-        public float SpeedY = 20f;
+        public EnemyVector2 EnemySpeed;
         public KeyCode[] RightKeys;
         public KeyCode[] LeftKeys;
         public KeyCode[] ShootKeys;
+        public AnimationCurve CircleSpeedX;
+        public AnimationCurve CircleSpeedY;
         public float PlayerSpeed = 4;
         public float StartInvulDuration = 2;
         public float HitInvulDuration = 2;
@@ -29,6 +31,16 @@ namespace SettingsModule
         public float BulletSpeed = 7f;
         public int StartHeartCount = 5;
         public EnemyInt EnemyLives;
+
+        public Vector2 GetSpeed(EEnemyType enemyType)
+        {
+            if (EnemySpeed.TryGetValue(enemyType, out var speed))
+            {
+                return speed;
+            }
+
+            throw new Exception($"Can't find enemy '{enemyType}' speed");
+        }
     }
 
     [Serializable]
@@ -43,14 +55,28 @@ namespace SettingsModule
         public EEnemyType EnemyType;
 
         [Range(0, 1)]
-        public float PositionPercentX;
+        public float PositionPercentX = 0.5f;
 
         [Range(0, 1)]
         public float PositionPercentY = 0.9f;
+
+        [ShowIf(nameof(IsRomb)), ShowIf(nameof(IsCircle))] public bool IsMoveRight;
+        [ShowIf(nameof(IsRomb)), ShowIf(nameof(IsCircle))] public bool IsMoveUp;
+        [Range(0, 1), ShowIf(nameof(IsCircle))] public float MaxY;
+
+        private bool IsRomb() => EnemyType == EEnemyType.Romb;
+        private bool IsSquare() => EnemyType == EEnemyType.Square;
+        private bool IsTriangle() => EnemyType == EEnemyType.Triangle;
+        private bool IsCircle() => EnemyType == EEnemyType.Circle;
     }
 
     [Serializable]
     public class EnemyInt : SerializedDictionary<EEnemyType, int>
+    {
+    }
+
+    [Serializable]
+    public class EnemyVector2 : SerializedDictionary<EEnemyType, Vector2>
     {
     }
 }

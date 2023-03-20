@@ -13,10 +13,12 @@ namespace LevelWindowModule
         public Vector3 Position => _enemyHierarchy.transform.position;
         public int Lives { get; private set; }
         public bool IsAlive => Lives > 0;
+        public EEnemyType EnemyType { get; }
 
-        public Enemy(EnemyHierarchy enemyHierarchy, IEnemyMoveData enemyMoveData)
+        public Enemy(EnemyHierarchy enemyHierarchy, IEnemyMoveData enemyMoveData, EEnemyType enemyType)
         {
             EnemyMoveData = enemyMoveData;
+            EnemyType = enemyType;
             _enemyHierarchy = enemyHierarchy;
         }
 
