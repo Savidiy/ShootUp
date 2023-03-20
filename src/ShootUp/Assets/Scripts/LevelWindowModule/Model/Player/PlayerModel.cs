@@ -1,4 +1,5 @@
-﻿using SettingsModule;
+﻿using AudioModule.Contracts;
+using SettingsModule;
 using UniRx;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace LevelWindowModule
     {
         private readonly PlayerHierarchy _playerHierarchy;
         private readonly GameSettings _gameSettings;
+        private readonly IAudioPlayer _audioPlayer;
         private float _invulnerableTimer;
         private float _blinkTimer;
         private float _shootCooldown;
@@ -24,10 +26,11 @@ namespace LevelWindowModule
         public IReadOnlyReactiveProperty<int> HeartCount => _heartCount;
         public bool IsAlive => _heartCount.Value > 0;
 
-        public PlayerModel(PlayerHierarchy playerHierarchy, GameSettings gameSettings)
+        public PlayerModel(PlayerHierarchy playerHierarchy, GameSettings gameSettings, IAudioPlayer audioPlayer)
         {
             _playerHierarchy = playerHierarchy;
             _gameSettings = gameSettings;
+            _audioPlayer = audioPlayer;
         }
 
         public void SetPositionX(float x)
@@ -50,6 +53,7 @@ namespace LevelWindowModule
         {
             if (heartCount < 0)
                 heartCount = 0;
+
             _heartCount.Value = heartCount;
         }
 
@@ -61,8 +65,11 @@ namespace LevelWindowModule
 
         public void GetHit()
         {
-            SetHeartCount(_heartCount.Value - 1);
+            int heartCount = _heartCount.Value - 1;
+            SetHeartCount(heartCount);
             SetInvulnerableTimer(_gameSettings.HitInvulDuration);
+
+            _audioPlayer.PlayOnce(heartCount == 0 ? SoundId.LoseLevel : SoundId.HeroHurt);
         }
 
         public void Update(float deltaTime)

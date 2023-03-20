@@ -546,4 +546,6 @@ MonoBehaviour:
   EnemyLives:
     keyData: 00000000010000000200000003000000
     valueData: 0500000005000000050000000a000000
+  DefaultMusicVolume: 0.5
+  DefaultSoundVolume: 0.25
   MusicClip: {fileID: 8300000, guid: 1548fe9ae79f37240ba1d70049e89c76, type: 3}

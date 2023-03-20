@@ -17,6 +17,7 @@ namespace Installers
     {
         public GameSettings GameSettings;
         public EnemyPrefabProvider EnemyPrefabProvider;
+        public AudioLibrary AudioLibrary;
 
         public override void InstallBindings()
         {
@@ -62,11 +63,13 @@ namespace Installers
             Container.Bind<BorderController>().AsSingle();
             Container.BindInterfacesAndSelfTo<CameraProvider>().AsSingle();
             
+            Container.BindInterfacesAndSelfTo<AudioPlayer>().AsSingle();
             Container.BindInterfacesAndSelfTo<AudioSettings>().AsSingle();
             Container.BindInterfacesAndSelfTo<MusicVolumeController>().AsSingle();
 
             Container.Bind<GameSettings>().FromInstance(GameSettings);
             Container.Bind<EnemyPrefabProvider>().FromInstance(EnemyPrefabProvider);
+            Container.Bind<AudioLibrary>().FromInstance(AudioLibrary);
         }
     }
 }

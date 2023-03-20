@@ -1,4 +1,5 @@
-﻿using Savidiy.Utils;
+﻿using AudioModule.Contracts;
+using Savidiy.Utils;
 using SettingsModule;
 using UnityEngine;
 
@@ -10,15 +11,17 @@ namespace LevelWindowModule
         private readonly PlayerHolder _playerHolder;
         private readonly BulletHolder _bulletHolder;
         private readonly GameSettings _gameSettings;
+        private readonly IAudioPlayer _audioPlayer;
         private bool _isMobilePressed;
 
         public PlayerShooter(TickInvoker tickInvoker, PlayerHolder playerHolder, BulletHolder bulletHolder,
-            GameSettings gameSettings)
+            GameSettings gameSettings, IAudioPlayer audioPlayer)
         {
             _tickInvoker = tickInvoker;
             _playerHolder = playerHolder;
             _bulletHolder = bulletHolder;
             _gameSettings = gameSettings;
+            _audioPlayer = audioPlayer;
         }
 
         public void Activate()
@@ -45,6 +48,7 @@ namespace LevelWindowModule
             PlayerModel playerModel = _playerHolder.PlayerModel;
             _bulletHolder.AddPlayerBulletAt(playerModel.BulletStartPosition);
             playerModel.SetShootCooldown(_gameSettings.PlayerShootCooldown);
+            _audioPlayer.PlayOnce(SoundId.Shoot);
         }
 
         private bool GetNeedShoot()

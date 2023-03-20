@@ -1,6 +1,5 @@
 ﻿using LevelWindowModule;
 using MvvmModule;
-using SettingsModule;
 using UniRx;
 using UnityEngine;
 
@@ -10,10 +9,10 @@ namespace AudioModule
     {
         private readonly AudioSource _musicSource;
 
-        public MusicVolumeController(ICameraProvider cameraProvider, AudioSettings audioSettings, GameSettings gameSettings)
+        public MusicVolumeController(ICameraProvider cameraProvider, AudioSettings audioSettings, AudioLibrary audioLibrary)
         {
             _musicSource = cameraProvider.Camera.gameObject.AddComponent<AudioSource>();
-            _musicSource.clip = gameSettings.MusicClip;
+            _musicSource.clip = audioLibrary.MusicClip;
             _musicSource.loop = true;
             _musicSource.playOnAwake = false;
             AddDisposable(audioSettings.MusicVolume.Subscribe(OnMusicVolumeChange));

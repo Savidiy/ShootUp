@@ -34,7 +34,6 @@ namespace SettingsModule
         public EnemyInt EnemyLives;
         public float DefaultMusicVolume = 0.5f;
         public float DefaultSoundVolume = 0.5f;
-        public AudioClip MusicClip;
 
         public Vector2 GetSpeed(EEnemyType enemyType)
         {

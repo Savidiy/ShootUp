@@ -1,4 +1,5 @@
 ﻿using System;
+using AudioModule.Contracts;
 using Savidiy.Utils;
 using SettingsModule;
 using UnityEngine;
@@ -13,16 +14,17 @@ namespace LevelWindowModule
         private readonly TickInvoker _tickInvoker;
         public PlayerModel PlayerModel { get; }
 
-        public PlayerHolder(BorderController borderController, GameSettings gameSettings, TickInvoker tickInvoker)
+        public PlayerHolder(BorderController borderController, GameSettings gameSettings, TickInvoker tickInvoker,
+            IAudioPlayer audioPlayer)
         {
             _borderController = borderController;
             _gameSettings = gameSettings;
             _tickInvoker = tickInvoker;
             _tickInvoker.Updated += OnUpdated;
             var playerHierarchy = Object.FindObjectOfType<PlayerHierarchy>();
-            PlayerModel = new PlayerModel(playerHierarchy, gameSettings);
+            PlayerModel = new PlayerModel(playerHierarchy, gameSettings, audioPlayer);
         }
-        
+
         public void ResetPlayer()
         {
             const float startX = 0;

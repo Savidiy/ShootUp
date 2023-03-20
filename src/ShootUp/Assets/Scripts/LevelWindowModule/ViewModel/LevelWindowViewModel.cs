@@ -1,3 +1,4 @@
+using AudioModule.Contracts;
 using LevelWindowModule.View;
 using MainModule;
 using MvvmModule;
@@ -14,6 +15,7 @@ namespace LevelWindowModule
         private readonly ProgressProvider _progressProvider;
         private readonly PlayerMover _playerMover;
         private readonly PlayerShooter _playerShooter;
+        private readonly IAudioPlayer _audioPlayer;
         private readonly ReactiveProperty<bool> _isWin = new();
         private readonly ReactiveProperty<bool> _isMobileControl = new ();
 
@@ -24,7 +26,7 @@ namespace LevelWindowModule
 
         public LevelWindowViewModel(IViewModelFactory viewModelFactory, ISettingsWindowPresenter settingsWindowPresenter,
             PlayerHolder playerHolder, MainStateMachine mainStateMachine, EnemyAtLivesKiller enemyAtLivesKiller,
-            ProgressProvider progressProvider, PlayerMover playerMover, PlayerShooter playerShooter)
+            ProgressProvider progressProvider, PlayerMover playerMover, PlayerShooter playerShooter, IAudioPlayer audioPlayer)
             : base(viewModelFactory)
         {
             _settingsWindowPresenter = settingsWindowPresenter;
@@ -32,6 +34,7 @@ namespace LevelWindowModule
             _progressProvider = progressProvider;
             _playerMover = playerMover;
             _playerShooter = playerShooter;
+            _audioPlayer = audioPlayer;
             HeartCount = playerHolder.PlayerModel.HeartCount;
 
             AddDisposable(enemyAtLivesKiller.AllEnemiesDead.Subscribe(OnAllEnemyDeadNext));
@@ -51,16 +54,19 @@ namespace LevelWindowModule
 
         public void SettingsClickFromView()
         {
+            _audioPlayer.PlayClick();
             _settingsWindowPresenter.ShowWindow();
         }
 
         public void ClickRestartFromView()
         {
+            _audioPlayer.PlayClick();
             _mainStateMachine.EnterToState<LevelPlayMainState>();
         }
 
         public void ClickResetFromView()
         {
+            _audioPlayer.PlayClick();
             _progressProvider.ResetProgress();
             _mainStateMachine.EnterToState<StartMainState>();
         }
