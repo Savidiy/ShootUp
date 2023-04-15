@@ -69,9 +69,11 @@ namespace Savidiy.Utils.StateMachine
 
         public void Dispose()
         {
-            if (_currentState is IDisposable disposable)
-                disposable.Dispose();
+            foreach ((Type _, T state) in _states)
+                if (state is IDisposable disposable)
+                    disposable.Dispose();
 
+            _states.Clear();
             _currentState = null;
         }
     }
